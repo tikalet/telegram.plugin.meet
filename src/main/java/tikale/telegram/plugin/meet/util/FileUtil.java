@@ -16,14 +16,14 @@ import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.util.FileCopyUtils;
 
 import tikale.telegram.plugin.meet.exception.DataFileNotFoundException;
 import tikale.telegram.plugin.meet.exception.DataFileUnableToLoadException;
 import tikale.telegram.plugin.meet.exception.DataFileUnableToSaveException;
 
-@Service
+@Component
 public class FileUtil {
 
     @Value("${data.file.name}")
