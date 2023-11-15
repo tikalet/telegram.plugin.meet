@@ -5,6 +5,7 @@ public class MessageResponseDto {
     private String message;
     private String chatName;
     private SendType type;
+    private boolean disableWebPagePreview = true;
 
     public MessageResponseDto() {
         super();
@@ -43,7 +44,16 @@ public class MessageResponseDto {
 
     @Override
     public String toString() {
-        return "MessageResponseDto [message=" + message + ", chatName=" + chatName + ", type=" + type + "]";
+        return "MessageResponseDto [message=" + message + ", chatName=" + chatName + ", type=" + type + ", disableWebPagePreview=" + disableWebPagePreview
+                + "]";
+    }
+
+    public boolean isDisableWebPagePreview() {
+        return disableWebPagePreview;
+    }
+
+    public void setDisableWebPagePreview(boolean disableWebPagePreview) {
+        this.disableWebPagePreview = disableWebPagePreview;
     }
 
 }

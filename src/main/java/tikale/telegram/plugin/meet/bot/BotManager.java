@@ -34,7 +34,7 @@ public class BotManager {
 
     @Autowired
     public BotManager(RestTemplateBuilder restTemplateBuilder, @Value("${bot.host}") String host, @Value("${my.token}") String token,
-            @Value("${http.timeout:1}") int timeout) {
+            @Value("${bot.http.timeout:1}") int timeout) {
         this.host = host;
         this.token = token;
         this.restTemplate = restTemplateBuilder

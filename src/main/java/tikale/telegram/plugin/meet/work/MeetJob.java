@@ -45,25 +45,25 @@ public class MeetJob {
     }
 
     private void processCheckDay(CheckDayType checkDayType) {
-        //  if (checkDayType == CheckDayType.WORK) {
-        if (chatName == null || chatName.isEmpty()) {
-            LOG.error("chatName is null. Unable to work");
-            return;
+        if (checkDayType == CheckDayType.WORK) {
+            if (chatName == null || chatName.isEmpty()) {
+                LOG.error("chatName is null. Unable to work");
+                return;
+            }
+
+            MessageResponseDto messageResponseDto = new MessageResponseDto();
+            messageResponseDto.setChatName(chatName);
+            messageResponseDto.setType(SendType.MARKDOWN);
+
+            try {
+                messageResponseDto.setMessage(fileUtil.load());
+                botManager.send(messageResponseDto);
+            } catch (Exception e) {
+                LOG.error(StringUtil.ERROR_TEXT, e);
+            }
+
+        } else {
+            LOG.warn("checkDayType for " + new Date() + " is " + checkDayType);
         }
-
-        MessageResponseDto messageResponseDto = new MessageResponseDto();
-        messageResponseDto.setChatName(chatName);
-        messageResponseDto.setType(SendType.MARKDOWN);
-
-        try {
-            messageResponseDto.setMessage(fileUtil.load());
-            botManager.send(messageResponseDto);
-        } catch (Exception e) {
-            LOG.error(StringUtil.ERROR_TEXT, e);
-        }
-
-        //        } else {
-        //            LOG.warn("checkDayType for " + new Date() + " is " + checkDayType);
-        //        }
     }
 }
